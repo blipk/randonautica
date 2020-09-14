@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Randonauts Journal</title>
+    <meta name="description" content="Randonauts Journal" />
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type"> 
+</head>
+
+<style>
+
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+#chatBox {
+    padding: 5px;
+}
+
+#message {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.message {
+    display: flex;
+    padding: 3px 0px 0px 0px;
+}
+
+.msg-content {
+    display: inline-block;
+    width: auto;
+
+    max-width: 70%;
+    max-height: 50%;
+
+    background-color: lightblue;
+    border-color: lightblue;
+    border-radius: 12px;
+    padding: 3px 7px 3px 7px;
+}
+
+
+
+.message-start {
+    justify-content: flex-start;
+    padding-right: 10px;
+}
+.message-end {
+    justify-content: flex-end;
+    padding-right: 10px;
+}
+/*
+#messages .message:nth-child(odd) {
+    justify-content: flex-start;
+    padding-left: 10px;
+}
+#messages .message:nth-child(odd) .msg-content {
+    color: red;
+}
+
+#messages .message:nth-child(even) {
+    justify-content: flex-end;
+    padding-right: 10px;
+}
+#messages .message:nth-child(even) .msg-content {
+    color: blue;
+}
+*/
+
+
+
+.msg-content-location {
+
+}
+
+.msg-content-text {
+
+}
+
+.msg-content-img {
+    padding: 2px 2px 2px 2px;
+    max-width: 50%;
+    max-height: 60%;
+}
+.msg-content-img img {
+    border-radius: 12px;
+    vertical-align: middle;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+
+
+
+.input-box {
+   position:absolute;
+   bottom: 0;
+   padding-bottom: 5px;
+   width:100%;
+}
+</style>
+
+
+<body>
+<div id="journal-container">
+    <div id="chatBox">
+        <div id="controls"></div>
+        <div id="messages">
+            <div class="message">
+                <div class="msg-content">
+                First entry...
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+//journalObject
+
+
+//Get messages section and clear
+let messages = document.getElementById("messages");
+//messages.innerHTML = "";
+
+journalObject.items.forEach(function(journalItem, i) {
+    let item = document.createElement("div");
+    item.className = "message";
+    
+
+    if (journalItem.data.lat) { //is a location
+        let outHTML = `<div class='msg-content msg-content-img msg-content-location'><img src='${journalItem.data.staticMap}'>`;
+        if (journalItem.data.type) outHTML += `<br>${journalItem.data.type} Point`;
+        if (journalItem.data.strength > 0) outHTML += `<br>Strength ${journalItem.data.strength}`;
+        if (journalItem.data.distance > 0) outHTML += `<br>Distance ${journalItem.data.distance}`;
+        if (journalItem.data.radius > 0) outHTML += `<br>Radius ${journalItem.data.radius}`;
+        outHTML += "</div>";
+
+        item.innerHTML = outHTML;
+        item.className += " message-end";
+    } else if (journalItem.data.includes('base64')) { //is image
+        item.innerHTML = "<div class='msg-content msg-content-img'><img src='" + journalItem.data + "'></div>";
+        item.className += " message-start";
+    } else if (typeof journalItem.data == 'string') { //is text
+        item.innerHTML = "<div class='msg-content'>" + journalItem.data + "</div>";
+        item.className += " message-start";
+    }
+
+    
+    messages.appendChild(item);
+}, this);
+
+</script>
+
+</body>
+</html> 

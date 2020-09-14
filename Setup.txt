@@ -1,0 +1,18 @@
+npm install -g @vue/cli @vue/cli-init
+#vue init nativescript-vue/vue-cli-template <projectname>
+cd <projectname>
+npm install
+#npm install decode-google-map-polyline --save
+
+#tns plugin add nativescript-google-maps-sdk
+
+tns plugin add nativescript-geolocation
+tns plugin add nativescript-permissions
+
+tns plugin add nativescript-pdf-view
+
+tns plugin add nativescript-menu
+tns plugin add nativescript-camera
+tns plugin add nativescript-imagepicker
+
+#tns plugin add nativescript-fonticon

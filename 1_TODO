@@ -1,0 +1,20 @@
+- auto set target as last generated point
+- implement camera hardware seed as QR code in main UI
+- upgrade target section
+
+
+- set up internal object save code for state resume and management
+- implement journal save code and export code
+
+UI:
+
+- separate zoom and center options
+- improve location list ui
+- improve radius selection ui 
+- improve journal layout and styling
+- seed and tweak random name generator
+- fix bug when failure of getting random names, ensure retries and create default
+- add headers to tab pages
+- fix load bug on theory tab page
+- improve theory pdf or replace with embedded wiki etc
+- enable using 'non-fine' gps-only location

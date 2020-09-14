@@ -1,0 +1,9 @@
+{
+  "android": {
+    "v8Flags": "--expose_gc",
+    "maxLogcatObjectSize": 2097152
+  },
+  "main": "main",
+  "name": "randonautica",
+  "version": "1.0.0"
+}
